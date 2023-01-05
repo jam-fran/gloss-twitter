@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext.String"],
+    "declaration": true,
+    "esModuleInterop": true,
+    "lib": ["ES2022", "ES2022.String"],
     "module": "commonjs",
     "outDir": "build",
     "noImplicitAny": true,
-    "target": "ESNext",
+    "target": "ES2022",
     "sourceMap": true,
-    "strict": true
+    "strict": true,
+    "types": ["vitest/globals"]
   },
   "exclude": ["node_modules"],
   "include": ["src/**/*"]
