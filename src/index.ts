@@ -6,3 +6,4 @@ export type {
   TweetPoll,
   TweetUrl,
 } from './schemas/tweet.schema'
+export * from 'twitter-api-v2'

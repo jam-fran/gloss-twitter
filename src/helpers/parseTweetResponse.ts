@@ -1,6 +1,6 @@
 import { type TweetV2SingleResult, TwitterV2IncludesHelper } from 'twitter-api-v2'
 import { type TweetOptions } from '../twitterApi'
-import { type Tweet } from '../schemas/tweet.schema'
+import { singleTweetSchema, type Tweet } from '../schemas/tweet.schema'
 import { map } from './mapTweet'
 
 export const parseTweetResponse = (
@@ -18,7 +18,7 @@ export const parseTweetResponse = (
 
   if (!author) throw new Error(`Tweet author required but not found.`)
 
-  return {
+  const rawTweet = {
     ...map.tweet(tweet, options),
     author: map.author(author),
     media: map.media(media),
@@ -29,4 +29,8 @@ export const parseTweetResponse = (
     }),
     poll: map.poll(poll),
   }
+
+  const validatedTweet = singleTweetSchema.parse(rawTweet)
+
+  return validatedTweet
 }

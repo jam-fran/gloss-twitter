@@ -9,7 +9,6 @@ import {
   authorSchema,
   mediaSchema,
   pollSchema,
-  singleTweetSchema,
   Tweet,
   TweetAuthor,
   TweetMedia,
@@ -30,21 +29,17 @@ export const mapTweet = (
 
   const trailingUrl = formatter.findTrailingUrl()
 
-  const rawTweet = {
+  return {
     createdAtTime: time,
     createdAtDate: date,
     id: tweet.id,
-    likeCount: tweet.public_metrics?.like_count,
-    quoteCount: tweet.public_metrics?.quote_count,
-    retweetCount: tweet.public_metrics?.retweet_count,
+    likeCount: tweet.public_metrics?.like_count ?? 0,
+    quoteCount: tweet.public_metrics?.quote_count ?? 0,
+    retweetCount: tweet.public_metrics?.retweet_count ?? 0,
     text: formatter.format(),
     urls,
     expandedUrl: trailingUrl?.title ? mapUrls([trailingUrl])?.at(0) : undefined,
   }
-
-  const validatedTweet = singleTweetSchema.parse(rawTweet)
-
-  return validatedTweet
 }
 
 export const mapAuthor = (author: UserV2): TweetAuthor => {
