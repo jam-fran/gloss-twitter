@@ -1,5 +1,5 @@
 {
-  "name": "@gloss/twitter",
+  "name": "@glossfm/twitter",
   "version": "1.0.0",
   "main": "build/index.js",
   "files": [
