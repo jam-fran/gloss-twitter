@@ -1,6 +1,6 @@
 import { type TweetV2SingleResult, TwitterV2IncludesHelper } from 'twitter-api-v2'
 import { type TweetOptions } from '../twitterApi'
-import { singleTweetSchema, type Tweet } from '../schemas/tweet.schema'
+import { tweetSchema, type Tweet } from '../schemas/tweet.schema'
 import { map } from './mapTweet'
 
 export const parseTweetResponse = (
@@ -30,7 +30,7 @@ export const parseTweetResponse = (
     poll: map.poll(poll),
   }
 
-  const validatedTweet = singleTweetSchema.parse(rawTweet)
+  const validatedTweet = tweetSchema.parse(rawTweet)
 
   return validatedTweet
 }
