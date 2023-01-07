@@ -37,15 +37,20 @@ export const pollSchema = z.object({
     .array(),
 })
 
+export const metricsSchema = z.object({
+  likeCount: z.number().int().nonnegative().default(0),
+  quoteCount: z.number().int().nonnegative().default(0),
+  retweetCount: z.number().int().nonnegative().default(0),
+  viewCount: z.number().int().nonnegative().default(0),
+})
+
 export const singleTweetSchema = z.object({
   id: z.string(),
   createdAtDate: z.string(),
   createdAtTime: z.string(),
   text: z.string(),
   author: authorSchema,
-  likeCount: z.number().int().nonnegative(),
-  quoteCount: z.number().int().nonnegative(),
-  retweetCount: z.number().int().nonnegative(),
+  metrics: metricsSchema,
   media: mediaSchema.array().optional(),
   urls: urlSchema.array().optional(),
   expandedUrl: urlSchema.optional(),
@@ -63,3 +68,4 @@ export type TweetAuthor = z.infer<typeof authorSchema>
 export type TweetMedia = z.infer<typeof mediaSchema>
 export type TweetUrl = z.infer<typeof urlSchema>
 export type TweetPoll = z.infer<typeof pollSchema>
+export type TweetMetrics = z.infer<typeof metricsSchema>

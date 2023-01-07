@@ -12,6 +12,7 @@ import {
   Tweet,
   TweetAuthor,
   TweetMedia,
+  TweetMetrics,
   TweetPoll,
   TweetUrl,
   urlSchema,
@@ -33,12 +34,21 @@ export const mapTweet = (
     createdAtTime: time,
     createdAtDate: date,
     id: tweet.id,
-    likeCount: tweet.public_metrics?.like_count ?? 0,
-    quoteCount: tweet.public_metrics?.quote_count ?? 0,
-    retweetCount: tweet.public_metrics?.retweet_count ?? 0,
     text: formatter.format(),
+    metrics: mapMetrics(tweet),
     urls,
     expandedUrl: trailingUrl?.title ? mapUrls([trailingUrl])?.at(0) : undefined,
+  }
+}
+
+export const mapMetrics = (tweet: TweetV2): TweetMetrics => {
+  const { public_metrics } = tweet
+  return {
+    likeCount: public_metrics?.like_count ?? 0,
+    quoteCount: public_metrics?.quote_count ?? 0,
+    retweetCount: public_metrics?.retweet_count ?? 0,
+    // @ts-ignore: No view count support yet from twitter-api-v2
+    viewCount: public_metrics?.impression_count,
   }
 }
 
