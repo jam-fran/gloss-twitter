@@ -5,6 +5,7 @@
     "lib": ["ES2022", "ES2022.String"],
     "module": "commonjs",
     "outDir": "build",
+    "noEmit": true,
     "noImplicitAny": true,
     "target": "ES2022",
     "skipLibCheck": true,

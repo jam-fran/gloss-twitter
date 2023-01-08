@@ -10,7 +10,7 @@
     "url": "git+https://github.com/jam-fran/gloss-twitter.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && vite build",
     "format": "prettier --write .",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "typecheck": "tsc -b"
@@ -19,18 +19,28 @@
   "license": "ISC",
   "dependencies": {
     "bad-words": "^3.0.4",
-    "twitter-api-v2": "^1.13.0",
-    "zod": "^3.20.2"
+    "clsx": "^1.2.1",
+    "isomorphic-dompurify": "^0.26.0",
+    "twitter-api-v2": "^1.13.0"
+  },
+  "peerDependencies": {
+    "react": "^18.x",
+    "react-dom": "^18.x",
+    "zod": "^3.x"
   },
   "devDependencies": {
     "@types/bad-words": "^3.0.1",
     "@types/node": "^18.11.18",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
+    "@vitejs/plugin-react": "^3.0.1",
     "eslint": "^8.31.0",
     "prettier": "^2.8.1",
     "tsx": "^3.12.1",
     "typescript": "^4.9.4",
+    "vite": "^4.0.4",
     "vitest": "^0.26.3"
   },
   "prettier": {

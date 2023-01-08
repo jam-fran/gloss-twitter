@@ -6,4 +6,5 @@ export type {
   TweetPoll,
   TweetUrl,
 } from './schemas/tweet.schema'
+export { TweetCard } from './components/tweet'
 export * from 'twitter-api-v2'

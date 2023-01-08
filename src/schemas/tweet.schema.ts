@@ -39,7 +39,6 @@ export const pollSchema = z.object({
 
 export const metricsSchema = z.object({
   likeCount: z.number().int().nonnegative().default(0),
-  quoteCount: z.number().int().nonnegative().default(0),
   retweetCount: z.number().int().nonnegative().default(0),
   viewCount: z.number().int().nonnegative().default(0),
 })
