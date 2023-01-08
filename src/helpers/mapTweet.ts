@@ -45,7 +45,6 @@ export const mapMetrics = (tweet: TweetV2): TweetMetrics => {
   const { public_metrics } = tweet
   return {
     likeCount: public_metrics?.like_count ?? 0,
-    quoteCount: public_metrics?.quote_count ?? 0,
     retweetCount: public_metrics?.retweet_count ?? 0,
     // @ts-ignore: No view count support yet from twitter-api-v2
     viewCount: public_metrics?.impression_count,
